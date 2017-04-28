@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Metyou</title>
-    <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= render 'layouts/common/head' %>
 
   <body>
 
-  <%= render 'layouts/flash_message' %>
-  <%= render 'layouts/header' %>
+  <%= render 'layouts/common/flash_message' %>
+  <%= render 'layouts/common/header' %>
+
     <%= yield %>
 
   </body>
