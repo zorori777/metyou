@@ -1,0 +1,15 @@
+<header>
+  <div >
+    <h1><a href="/">Metyou</a></h1>
+      <% if user_signed_in? %>
+       <div >
+         <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+       </div>
+      <% else %>
+        <div >
+         <%= link_to "Log In", new_user_session_path %>
+         <%= link_to "Sign Up", new_user_registration_path %>
+        </div>
+      <% end %>
+  </div>
+</header>
