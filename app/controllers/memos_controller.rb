@@ -1,5 +1,7 @@
 class MemosController < ApplicationController
 
+  before_action :set_memo, only: %i( edit update )
+
   def index
     @memos = Memo.all
   end
@@ -17,9 +19,26 @@ class MemosController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @memo.update(memo_params)
+      redirect_to root_path(@memo), notice: "success!!!!"
+    else
+      flash[:alert] = "Error"
+      render :edit
+    end
+  end
+
   private
+
   def memo_params
     params.require(:memo).permit(:body, :people)
+  end
+
+  def set_memo
+    @memo = Memo.find(params[:id])
   end
 
 end

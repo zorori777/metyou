@@ -1,6 +1,5 @@
 <div>
   <% @memos.each do |memo| %>
-    <%= memo.body %>
-    <%= memo.people %>
+    <%= render @memos %>
     <% end %>
 </div>
