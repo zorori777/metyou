@@ -1,6 +1,6 @@
 class MemosController < ApplicationController
 
-  before_action :set_memo, only: %i( edit update )
+  before_action :set_memo, only: %i( edit update destroy)
 
   def index
     @memos = Memo.all
@@ -23,18 +23,29 @@ class MemosController < ApplicationController
   end
 
   def update
+
     if @memo.update(memo_params)
       redirect_to root_path(@memo), notice: "success!!!!"
     else
       flash[:alert] = "Error"
       render :edit
     end
+
   end
+
+  def destroy
+    if @memo.user_id == current_user.id
+      @memo.destroy
+      redirect_to root_path, notice: "DELETE DONE!!!"
+    end
+  end
+
 
   private
 
   def memo_params
-    params.require(:memo).permit(:body, :people)
+    params.require(:memo).permit(:body,
+                                 :people)
   end
 
   def set_memo
