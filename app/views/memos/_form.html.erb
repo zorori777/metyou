@@ -1,0 +1,20 @@
+<%= form_for memo do |f| %>
+  <div>
+    <%= f.label :body %><br />
+    <%= f.text_field :body, placefolder: "What do you think?" %>
+  </div>
+
+  <div>
+    <%= f.label :people %><br />
+    <%= f.text_field :people, placefolder: "Who does the people look like?" %>
+  </div>
+
+  <div>
+   <%= f.hidden_field :user_id %>
+  </div>
+
+   <div>
+    <%= f.submit "Send " %>
+   </div>
+
+<% end %>
